@@ -24,17 +24,19 @@ export default function Home() {
   });
 
   return (
-    <main className="mx-auto max-w-7xl px-4 mt-4 sm:px-6 lg:px-8">
-      <div className="py-10">
-        <h1 className="text-4xl font-bold mb-4">Campaigns:</h1>
-
-        <div>
+    <main className="mx-auto pb-20 max-w-7xl px-4 mt-4 sm:px-6 lg:px-8">
+      <div className="">
+        <div className="text-center">
           <Image
           src={background}
-          height={500}
-          width={500}
+          height={800}
+          width={800}
           alt="background"
+          className="w-[90rem] object-cover"
           />
+          <div className=" absolute bottom-[19rem] bg-gray-500/50">
+          <h1 className="relative ">Testing</h1>
+          </div>
         </div>
         <div className="grid grid-cols-3 gap-4">
           {!isLoadingCampaigns && campaigns && (

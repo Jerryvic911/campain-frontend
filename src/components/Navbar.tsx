@@ -7,7 +7,7 @@ const Navbar = () => {
     const account = useActiveAccount();
 
     return (
-        <nav className="bg-[#e0d4e0] border-b-2 border-b-slate-300 pb-5">
+        <nav className="bg-[#e0d4e0] border-b-2 border-b-slate-300 pb-3">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
