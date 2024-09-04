@@ -5,6 +5,8 @@ import { baseSepolia } from "thirdweb/chains";
 import { getContract } from "thirdweb";
 import { CampaignCard } from "@/components/CampaignCard";
 import { CROWDFUNDING_FACTORY } from "./constants/contracts";
+import Image from "next/image";
+import background from "./image/background.png"
 
 export default function Home() {
   // Get CrowdfundingFactory contract
@@ -25,6 +27,15 @@ export default function Home() {
     <main className="mx-auto max-w-7xl px-4 mt-4 sm:px-6 lg:px-8">
       <div className="py-10">
         <h1 className="text-4xl font-bold mb-4">Campaigns:</h1>
+
+        <div>
+          <Image
+          src={background}
+          height={500}
+          width={500}
+          alt="background"
+          />
+        </div>
         <div className="grid grid-cols-3 gap-4">
           {!isLoadingCampaigns && campaigns && (
             campaigns.length > 0 ? (

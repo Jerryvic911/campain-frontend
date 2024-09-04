@@ -203,6 +203,7 @@ const CreateCampaignModal = (
                     <label>Tier Name:</label>
                     <input 
                         type="text" 
+                        id="tireName"
                         value={tierName}
                         onChange={(e) => setTierName(e.target.value)}
                         placeholder="Tier Name"

@@ -25,6 +25,7 @@ export default function DashboardPage() {
         method: "function getUserCampaigns(address _user) view returns ((address campaignAddress, address owner, string name, uint256 creationTime)[])",
         params: [account?.address as string]
     });
+ 
     
     return (
         <div className="mx-auto max-w-7xl px-4 mt-16 sm:px-6 lg:px-8">
@@ -92,6 +93,7 @@ const CreateCampaignModal = (
                     campaignGoal,
                     campaignDeadline
                 ],
+                // publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
                 publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
                 version: "1.0.6",
             });
