@@ -8,10 +8,16 @@ import { baseSepolia } from "thirdweb/chains";
 import { lightTheme, TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
 
 export default function CampaignPage() {
+
+    
     const account = useActiveAccount();
     const { campaignAddress } = useParams();
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    
+
+   
+    
 
     const contract = getContract({
         client: client,
@@ -48,6 +54,12 @@ export default function CampaignPage() {
     const { data: goal, isLoading: isLoadingGoal } = useReadContract({
         contract: contract,
         method: "function goal() view returns (uint256)",
+        params: [],
+    });
+
+    const { data: cash, isLoading: isLoadingbalance } = useReadContract({
+        contract: contract,
+        method: "function owner() view returns (address)",
         params: [],
     });
     
@@ -92,11 +104,13 @@ export default function CampaignPage() {
     return (
         <div className="mx-auto max-w-7xl px-2 mt-4 sm:px-6 lg:px-8">
             <div className="flex flex-row justify-between items-center">
+                
                 {!isLoadingName && (
                     <p className="text-4xl font-semibold">{name}</p>
                 )}
                 {owner === account?.address && (
                     <div className="flex flex-row">
+                        
                         {isEditing && (
                             <p className="px-4 py-2 bg-gray-500 text-white rounded-md mr-2">
                                 Status:  
@@ -109,6 +123,22 @@ export default function CampaignPage() {
                             className="px-4 py-2 bg-blue-500 text-white rounded-md"
                             onClick={() => setIsEditing(!isEditing)}
                         >{isEditing ? "Done" : "Edit"}</button>
+                        <div className="flex flex-row">
+                    {/* ... existing code ... */}
+                    <TransactionButton
+                        transaction={() => prepareContractCall({
+                            contract: contract,
+                            method: "function withdraw()",
+                            params: []
+                        })}
+                        onTransactionConfirmed={async () => {
+                            alert("Withdrawal successful!")
+                        }}
+                        onError={(error) => alert(`Error: ${error.message}`)}
+                        theme={lightTheme()}
+                    >Withdraw</TransactionButton>
+                </div>
+                
                     </div>
                 )}
             </div>

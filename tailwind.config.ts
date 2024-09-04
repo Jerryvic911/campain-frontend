@@ -18,7 +18,7 @@ const config: Config = {
     fontFamily: {
       'sans': ['ui-sans-serif', 'system-ui', ...['Helvetica', 'Arial']],
       'serif': ['ui-serif', 'Georgia', ...['Times New Roman', 'serif']],
-      'logo': ["Pacifico", "cursive"],
+      'logo': ["Irish Grover", "system-ui"],
       'Montserrat': ["Montserrat", 'sans-serif'],
       'display': ["Playfair Display", "serif"],
       'body': ['"Open Sans"', ...['sans-serif']],

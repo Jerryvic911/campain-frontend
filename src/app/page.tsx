@@ -42,7 +42,7 @@ export default function Home() {
           
             <div className="absolute bottom-[19rem]">
               <h1 className="relative uppercase left-[23rem] bottom-[6rem] font-jerry font-bold text-4xl  text-white">
-                Ares: Fund the change,<br/> one project at a time
+                Arex: Fund the change,<br/> one project at a time
               </h1>
               <div>
                 <Link  href={`/dashboard/${account?.address}`}>
