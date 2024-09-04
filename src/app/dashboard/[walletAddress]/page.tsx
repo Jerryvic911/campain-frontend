@@ -105,7 +105,7 @@ const CreateCampaignModal = (
                 ],
                 // publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
                 publisher: "0xF972a8932EF9484b7374fa31693D81024F8bfaEd",
-                version: "1.0.4",
+                version: "1.0.5",
             });
             alert("Contract deployed successfully!");
         } catch (error) {
