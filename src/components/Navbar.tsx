@@ -24,20 +24,20 @@ const Navbar = () => {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                            ARES
+                            <h1 className="font-logo font-bold text-2xl">AREX</h1>
                         </div>
-                        <div className="hidden sm:ml-6 sm:block">
+                        <div className="hidden sm:ml-[27rem] sm:block ">
                             <div className="flex space-x-4">
                                 <Link
                                     href={'/'}
                                 >
-                                    <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700">Campaigns</p>
+                                    <p className="rounded-md px-3 font-display py-2 text-lg font-medium  text-slate-700">Campaigns</p>
                                 </Link>
                                 {account && (
                                     <Link
                                         href={`/dashboard/${account?.address}`}
                                     >
-                                        <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700">Dashboard</p>
+                                        <p className="rounded-md font-display  px-3 py-2 text-lg font-medium text-slate-700">Dashboard</p>
                                     </Link>
                                 )}
                             </div>

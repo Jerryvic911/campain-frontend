@@ -10,7 +10,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react"
 
 export default function DashboardPage() {
     const account = useActiveAccount();
-    
+
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const contract = getContract({
@@ -25,16 +25,18 @@ export default function DashboardPage() {
         method: "function getUserCampaigns(address _user) view returns ((address campaignAddress, address owner, string name, uint256 creationTime)[])",
         params: [account?.address as string]
     });
- 
-    
+
+
     return (
         <div className="mx-auto max-w-7xl px-4 mt-16 sm:px-6 lg:px-8">
             <div className="flex flex-row justify-between items-center mb-8">
                 <p className="text-4xl font-semibold">Dashboard</p>
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                {myCampaigns && myCampaigns.length > 1 ? <button
+                    className="px-4 py-2  bg-[#2C0034] text-white rounded-md"
                     onClick={() => setIsModalOpen(true)}
-                >Create Campaign</button>
+                >Create Campaign</button> : ''}
+
+
             </div>
             <p className="text-2xl font-semibold mb-4">My Campaigns:</p>
             <div className="grid grid-cols-3 gap-4">
@@ -47,11 +49,19 @@ export default function DashboardPage() {
                             />
                         ))
                     ) : (
-                        <p>No campaigns</p>
+                        <div className="w-full gap-5 col-span-full  flex items-center justify-center flex-col ">
+
+                            <p className="font-[500] text-[64px] loading-[76px]">Wow, Such Empty.</p>
+                            <p className="font-[400] text-[20px] loading-[27px]">Start by Creating a Campaign</p>
+                            <button
+                                className="px-4 py-2 bg-[#2C0034] text-white rounded-md"
+                                onClick={() => setIsModalOpen(true)}
+                            > + Create Campaign</button>
+                        </div>
                     )
                 )}
             </div>
-            
+
             {isModalOpen && (
                 <CreateCampaignModal
                     setIsModalOpen={setIsModalOpen}
@@ -76,7 +86,7 @@ const CreateCampaignModal = (
     const [campaignDescription, setCampaignDescription] = useState<string>("");
     const [campaignGoal, setCampaignGoal] = useState<number>(1);
     const [campaignDeadline, setCampaignDeadline] = useState<number>(1);
-    
+
     // Deploy contract from CrowdfundingFactory
     const handleDeployContract = async () => {
         setIsDeployingContract(true);
@@ -94,8 +104,8 @@ const CreateCampaignModal = (
                     campaignDeadline
                 ],
                 // publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
-                publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
-                version: "1.0.6",
+                publisher: "0xF972a8932EF9484b7374fa31693D81024F8bfaEd",
+                version: "1.0.4",
             });
             alert("Contract deployed successfully!");
         } catch (error) {
@@ -127,52 +137,52 @@ const CreateCampaignModal = (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center backdrop-blur-md">
             <div className="w-1/2 bg-slate-100 p-6 rounded-md">
                 <div className="flex justify-between items-center mb-4">
-                    <p className="text-lg font-semibold">Create a Campaign</p>
+                    <p className="text-2xl font-semibold">Create a Campaign</p>
                     <button
-                        className="text-sm px-4 py-2 bg-slate-600 text-white rounded-md"
+                        className="text-black font-bold text-2xl"
                         onClick={() => setIsModalOpen(false)}
-                    >Close</button>
+                    >X</button>
                 </div>
                 <div className="flex flex-col">
-                    <label>Campaign Name:</label>
-                    <input 
-                        type="text" 
+                    <label className="font-bold">Enter Campaign Name: </label>
+                    <input
+                        type="text"
                         value={campaignName}
                         onChange={(e) => setCampaignName(e.target.value)}
                         placeholder="Campaign Name"
-                        className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
+                        className="mb-4 px-4 py-2 bg-[#F9E4FC] rounded-md text-[#8D4A99]"
                     />
-                    <label>Campaign Description:</label>
+                    <label className="font-bold">Campaign Description:</label>
                     <textarea
                         value={campaignDescription}
                         onChange={(e) => setCampaignDescription(e.target.value)}
                         placeholder="Campaign Description"
-                        className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
+                        className="mb-4 px-4 py-2 bg-[#F9E4FC] rounded-md text-[#8D4A99]"
                     ></textarea>
-                    <label>Campaign Goal:</label>
-                    <input 
+                    <label className="font-bold">Campaign Goal:</label>
+                    <input
                         type="number"
                         value={campaignGoal}
                         onChange={(e) => handleCampaignGoal(parseInt(e.target.value))}
-                        className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
+                        className="mb-4 px-4 py-2 bg-[#F9E4FC] rounded-md text-[#8D4A99]"
                     />
-                    <label>{`Campaign Length (Days)`}</label>
+                    <label className="font-bold">{`Campaign Length (Days)`}</label>
                     <div className="flex space-x-4">
-                        <input 
+                        <input
                             type="number"
                             value={campaignDeadline}
                             onChange={(e) => handleCampaignLengthhange(parseInt(e.target.value))}
-                            className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
+                            className="mb-4 px-4 py-2 bg-[#F9E4FC] rounded-md text-[#8D4A99]"
                         />
                     </div>
 
                     <button
-                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+                        className="mt-4 px-4 py-2 bg-[#2C0034] text-white rounded-md"
                         onClick={handleDeployContract}
                     >{
-                        isDeployingContract ? "Creating Campaign..." : "Create Campaign"
-                    }</button>
-                    
+                            isDeployingContract ? "Creating Campaign..." : "Create Campaign"
+                        }</button>
+
                 </div>
             </div>
         </div>
