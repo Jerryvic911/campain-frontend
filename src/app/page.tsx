@@ -9,6 +9,7 @@ import Image from "next/image";
 import background from "./image/background.png"
 import Link from "next/link";
 import { ConnectButton, darkTheme, useActiveAccount } from "thirdweb/react";
+import "./Page.css"
 
 export default function Home() {
   const account = useActiveAccount();
@@ -31,17 +32,17 @@ export default function Home() {
   return (
     <main className="text-center mx-auto pb-20 max-w-7xl px-4 mt-4 sm:px-6 lg:px-8">
       <div className="">
-        <div className="text-center">
+        <div className="text-center ">
           <Image
           src={background}
           height={800}
           width={800}
           alt="background"
-          className="w-[90rem] object-cover"
+          className="w-[90rem] object-cover image"
           />
           
             <div className="absolute bottom-[19rem]">
-              <h1 className="relative uppercase left-[23rem] bottom-[6rem] font-jerry font-bold text-4xl  text-white">
+              <h1 className="text relative uppercase left-[23rem] bottom-[6rem] font-jerry font-bold text-4xl  text-white">
                 Arex: Fund the change,<br/> one project at a time
               </h1>
               <div>

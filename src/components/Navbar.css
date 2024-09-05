@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .nav-container {
+        color: red;
+    }
+    .logo{
+        position: relative;
+        right: 40px;
+    }
+}

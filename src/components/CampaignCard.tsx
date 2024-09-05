@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getContract } from "thirdweb";
 import { baseSepolia } from "thirdweb/chains";
 import { useReadContract } from "thirdweb/react";
+import "./Campaigncard.css"
 
 type CampaignCardProps = {
     campaignAddress: string;
@@ -54,7 +55,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaignAddress }) =
     }
 
     return (
-            <div className="mt-20 flex flex-col justify-between w-[303px] h-[242px] pl-10 p-6 bg-white border border-slate-200 rounded-lg shadow">
+            <div className="cards mt-20 grid grid-cols-3 justify-between w-[303px] h-[242px] pl-10 p-6 bg-white border border-slate-200 rounded-lg shadow">
                 
                 <div>
 

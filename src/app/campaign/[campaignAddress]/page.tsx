@@ -15,10 +15,6 @@ export default function CampaignPage() {
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     
-
-   
-    
-
     const contract = getContract({
         client: client,
         chain: baseSepolia,

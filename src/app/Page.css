@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px) {
+    .image{
+        display: none;
+    }
+
+    .text{
+        font-size: 40px;
+        line-height: 20px;
+        position: absolute;
+        right: 60px;
+        display: none;
+    }
+
+    button{
+        position: absolute;
+        right: 6rem;
+        bottom: 0;
+        top: 0;
+        display: none;
+    }
+}
