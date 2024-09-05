@@ -2,9 +2,21 @@
 import { client } from "@/app/client";
 import Link from "next/link";
 import { ConnectButton, darkTheme, useActiveAccount } from "thirdweb/react";
+import { createWallet } from "thirdweb/wallets";
 
+
+const wallets = [
+    createWallet("io.metamask"),
+    createWallet("com.coinbase.wallet"),
+    createWallet("me.rainbow"),
+    createWallet("io.rabby"),
+    createWallet("io.zerion.wallet"),
+];
 const Navbar = () => {
     const account = useActiveAccount();
+
+
+
 
     return (
         <nav className="bg-[#e0d4e0] border-b-2 border-b-slate-300 pb-3">
@@ -46,13 +58,10 @@ const Navbar = () => {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <ConnectButton
                             client={client}
-                            theme={darkTheme()}
-                            detailsButton={{
-                                style: {
-                                    maxHeight: "50px",
-                                }
-                            }}
+                            wallets={wallets}
+                            connectModal={{ size: "compact" }}
                         />
+
                     </div>
                 </div>
             </div>
