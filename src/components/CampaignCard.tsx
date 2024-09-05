@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getContract } from "thirdweb";
 import { baseSepolia } from "thirdweb/chains";
 import { useReadContract } from "thirdweb/react";
-import "./Campaigncard.css"
+
 
 type CampaignCardProps = {
     campaignAddress: string;

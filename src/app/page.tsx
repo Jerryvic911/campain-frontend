@@ -9,7 +9,6 @@ import Image from "next/image";
 import background from "./image/background.png"
 import Link from "next/link";
 import { ConnectButton, darkTheme, useActiveAccount } from "thirdweb/react";
-import "./Page.css"
 
 export default function Home() {
   const account = useActiveAccount();
